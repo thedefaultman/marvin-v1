@@ -1,6 +1,7 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/dist/types/server';
 import { publicProcedure, router } from './trpc';
 import { TRPCError } from '@trpc/server';
+import {db} from '@/db'
  
 export const appRouter =  router({
       // Define your API procedures here
@@ -13,6 +14,21 @@ export const appRouter =  router({
 
         //check if the user is in database
 
+        const dbUser = await db.user.findFirst({
+            where: {
+                id: user.id
+            }
+        })
+        
+        if(!dbUser) {
+            //create the user in db
+            await db.user.create({
+                data: {
+                    id: user.id,
+                    email: user.email
+                }
+            })
+        }
 
         return { success: true }
     })
