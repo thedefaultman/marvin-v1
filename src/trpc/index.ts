@@ -1,7 +1,10 @@
-import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/dist/types/server';
-import { publicProcedure, router } from './trpc';
-import { TRPCError } from '@trpc/server';
-import {db} from '@/db'
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import {
+  publicProcedure,
+  router,
+} from './trpc'
+import { TRPCError } from '@trpc/server'
+import { db } from '@/db'
  
 export const appRouter =  router({
       // Define your API procedures here
