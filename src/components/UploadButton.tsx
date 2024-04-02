@@ -8,12 +8,15 @@ import { Button } from "./ui/button";
 import Dropzone from "react-dropzone";
 import { Cloud, File } from "lucide-react";
 import { Progress } from "./ui/progress";
+import { useUploadThing } from "@/lib/uploadthing";
 
 const UploadDropzone = () => {
 
     //set to false later
     const [isUploading, setIsUploading] = useState<boolean>(true)
     const [uploadProgress, setUploadProgress] = useState<number>(0)
+
+    const {} = useUploadThing("pdfUploader") // 4:23:48
 
     //setting the progress bar
     const startSimulatedProgress = () => {
